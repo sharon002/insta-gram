@@ -1,0 +1,47 @@
+{%extends 'base.html' %}
+{% load static %}
+
+
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if usernames %}
+    <h2>Found {{ usernames|length }} user(s) with that username {{message}}</h2>
+    {% else %}
+    <h2> Found 0 users for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+  <div class="row">
+    {% for user in usernames %}
+    <div class="container">
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="/user/{{user.id}}" class="others"><strong class="list-inline"><img src="/static/img/pro.png"
+                alt="avatar" class="img-circle" id="each"> {{user.username}} </strong>
+          </a>
+        </li>
+        {% if user in people %}
+        <li class="list-inline-item">
+          <a href="/unfollow/{{user.id}}"><button class="btn btn-info btn-sm">Following</button></a>
+        </li>
+        {% else %}
+        <li class="list-inline-item">
+          <a href="/follow/{{user.id}}"><button class="btn btn-info btn-sm">Follow</button></a>
+        </li>
+        {% endif %}
+      </ul>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+{% endblock %}
