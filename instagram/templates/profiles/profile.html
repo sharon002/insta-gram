@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ form.media }}
+<div style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row top-section">
+                    <div class="col-md-5 profile-image">
+                        
+                        <img style="width: 130px; height: 100px;" class="rounded-circle account-img"
+                            src="{{ user.profile.profile_photo.url }}" alt="Profile Picture">
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <span class="username">{{ profile.username }}</span>
+                            </li>
+                            {% if profile.username == user.username %}
+                            <li class="list-inline-item">
+                                <div class="card">
+                                    <a style="color: rgb(24, 24, 24);" class="ml-2 mr-2 mt-1 mb-1"
+                                        href="{% url 'profile_update' %}">Edit Profile</a>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <a data-toggle="modal" data-target="#settings"><i class="fa fa-cog fa-2x"></i></a>
+                            </li>
+                            {% else %}
+                            <li class="list-inline-item">
+                                <a href="#" class="btn btn-primary">Follow</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <span class="font-weight-bold">{{ user_images|length }} </span> Posts
+                            </li>
+                            <li class="list-inline-item">
+                                <span class="font-weight-bold">0 </span> Followers
+                            </li>
+                            <li class="list-inline-item">
+                                <span class="font-weight-bold">0 </span> Following
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="card-columns">
+            {% for image in user_images %}
+            <div class="mb-5">
+                <div class="card-deck">
+                    <a class="mb-1" href="#"><img style="width: 360px; height: 300px;" src="{{ image.image.url }}"
+                            alt="Image" data-toggle="modal" data-target="#{{image.id}}"></a>
+                </div>
+                {% empty %}
+                    <h5>You do not have any images to show</h5>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center"><a style="color: rgb(24, 24, 24);"
+                                    href="{% url 'edit_profile' %}">Edit Profile</a></li>
+                            <li class="list-group-item text-center"><a style="color: rgb(24, 24, 24);"
+                                    href="/logout/">Log
+                                    Out</a></li>
+                            <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

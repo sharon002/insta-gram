@@ -1,0 +1,49 @@
+{%extends "registration/base.html"%}
+{% load bootstrap4  %}
+{% block content %}
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="register">
+                <div class="registform">
+                    <div class="card">
+                        <img src="../../static/images/instagram_logo.png" alt=""
+                            style="width:190px; height:50px; margin: 5px auto; display: block;">
+                        <form action="" method="post" class="ml-3 mr-3">
+                            {% csrf_token %}
+                            {% bootstrap_form form layout='inline' %}
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-md btn-block" value="Sign Up">
+                            </div>
+                    </div>
+                    <div class="card mt-3">
+                        <p class="ml-5 mt-3">Have an account? <a href="{% url 'login' %}" class="ml-1">
+                                Login</a></p>
+                    </div>
+                    <input type="hidden" name="next" value="{{next}}">
+
+                    </form>
+                    <div class="mt-3">
+                        <p style="text-align: center;">Get the app.</p>
+                        <div class="login-playstorebtn">
+                            <p class="googlebtn ml-5">
+
+                                <a href="https://www.apple.com/us/search/instagram?src=itunes_serp"><img
+                                        src="../../static/images/applestore.jpeg" alt=""
+                                        style="width:130px; height:40px "></a>
+                                <a href="https://play.google.com/store/search?q=instagram"><img
+                                        src="../../static/images/download.svg" alt=""
+                                        style="width:130px; height:40px "></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<br>
+{% endblock %}

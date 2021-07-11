@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div style="margin-top: 100px;">
+<div class="container top">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form action="{% url 'profile_update' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form p_form %}
+                {% bootstrap_form u_form %}
+                <input type="submit" class="btn btn-outline-secondary" value="Update">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</div>
+{% endblock %}

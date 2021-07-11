@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="margin-top: 120px">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+
+                {% for image in all_images %}
+                <div class="home-images">
+                    <div class="mb-5">
+                        <div class="card" id="card_margin">
+                            <ul class="list-inline home-list mb-0">
+                                <li class="list-inline-item">
+                                    <img style="width: 70px; height: 60px;" class="ml-2 mt-2 rounded-circle account-img"
+                                        src="{{ image.profile.profile.profile_photo.url }}" alt="Profile Picture"></li>
+                                <li class="list-inline-item">
+                                    <a style="color: black;"
+                                        href="{% url 'profile' username=image.profile.username %}">{{ image.profile.username }}</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <a class="mb-2" href=""><img style="width: 585px; height: 420px;"
+                                    src="{{ image.image.url }}" alt="Image" class="" data-toggle="modal"
+                                    data-target="#{{image.id}}"></a>
+
+
+                            <ul class="ml-4 list-inline home-text">
+                                <li class="list-inline-item">
+                                    <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{% url 'single_image' image_id=image.id %}"><i
+                                            class="fa fa-comment-o fa-2x" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                            <h6 class="ml-4 text-muted">Posted on {{ image.date_posted|date:"D, d M, Y" }} at {{image.date_posted|date:"g:i a" }} </h6>
+                            <p class="ml-3">{{ image.image_caption }} </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                {% empty %}
+                <h2 class="mt-5">No images to show. Follow some people to see their images</h2>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="media" style="position: fixed; ">
+                    <img style="width: 120px; height: 100px;" class="rounded-circle account-img"
+                        src="{{ user.profile.profile_photo.url }}" alt="No profile photo">
+                    <h6 class="mt-5 ml-2 account-heading">{{ user.username }}</h6>
+
+                </div>
+                <div class="card" style="position: fixed; margin-top: 120px;">
+                   
+                        <p><span class="ml-2 mr-4 mt-2 mb-2 text-muted">Suggestions For You</span>
+                            <a href="#">
+                            <span style="color: black;;" class="ml-5 mr-2">See All</span></p>
+                    </a>
+                   
+                    {% for user in all_users %}
+                    <p style="margin-bottom: -15px;"><span class="ml-4 mr-4 mt-2 mb-2">{{ user.username }}</span>
+                   </p>
+                   <a href="#">
+                        <span style="margin-left: 230px;">Follow</span>
+                   </a>
+                  
+                    {% empty %}
+                        <h5 class="ml-4 mr-4 mt-2 mb-2">No users to show<h/5> 
+                    {% endfor %} 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+    {% endblock %}

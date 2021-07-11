@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="margin-top: 100px;">
+    <div class="container top">
+        {% if profiles %}
+        <div class="row">
+            <div class="col-md-12 text-center">
+                {% if profiles %}
+                <h2>Found {{ profiles|length }} users of searched user {{message}}.</h2>
+                {% else %}
+                <h2 style="font-weight: bolder"> {{ message }}</h2>
+                {% endif %}
+
+            </div>
+        </div>
+        {% endif %}
+        {% if search_term == ' ' %}
+        <div class="col-md-12 text-center">
+            <h4 class="font1">You have not entered anything to search for!</h4>
+        </div>
+        {% endif %}
+        <div class="row">
+            {% if profiles %}
+            {% for profile in profiles %}
+            <div class="col-md-3 home-images search-results">
+                <img style="width: 70px; height: 60px;" class="ml-2 mt-2 rounded-circle account-img"
+                    src="{{ profile.profile_photo.url }}" alt="Profile Picture">
+                <p class="username ml-2">{{ profile.user.username }} </p>
+                <p><a class="btn btn-info" href="{% url 'profile' username=profile.user.username %}">View Profile</a>
+                </p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12 text-center">
+                <h4 class="font1">No results for {{message}} </h4>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
