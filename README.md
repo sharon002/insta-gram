@@ -25,7 +25,7 @@ As a user of the application i should be able to:
 * Clone https://github.com/sharon002/insta-gram.git
 * Atleast have a computer or a laptop
 * Have an internet connection
-<!-- * Visit https://bett-instagram.herokuapp.com/ -->
+* https://git.heroku.com/sharinstan.git
 
 * install Django
 
