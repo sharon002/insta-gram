@@ -64,22 +64,22 @@ def single_image(request, image_id):
     return render(request, 'single_image.html', {'image':image, 'form':form, 'comments':comments})
 
 
-@login_required(login_url='/accounts/login')
-def edit_profile(request):
-    if request.method == 'POST':
-        form = ProfileUpdateForm(request.POST, request.FILES)
-        if form.is_valid():
-            edit = form.save(commit=False)
-            edit.user = request.user
-            edit.save()
-            return redirect('edit_profile')
-    else:
-        form = ProfileUpdateForm()
+# @login_required(login_url='/accounts/login')
+# def edit_profile(request):
+#     if request.method == 'POST':
+#         form = ProfileUpdateForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             edit = form.save(commit=False)
+#             edit.user = request.user
+#             edit.save()
+#             return redirect('edit_profile')
+#     else:
+#         form = ProfileUpdateForm()
 
-    return render(request, 'profiles/edit_profile.html', {'form':form})
+#     return render(request, 'profiles/edit_profile.html', {'form':form})
 
 
-@login_required(login_url='/accounts/login')
+# @login_required(login_url='/accounts/login')
 
 
 def profile_update(request):
