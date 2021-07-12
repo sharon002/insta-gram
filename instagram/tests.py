@@ -9,8 +9,8 @@ class ImageTestClass(TestCase):
     #     self.post.save_image()
     #     images = Image.objects.all()
     #     self.assertTrue(len(images)>0)
-class CommentTestClass(TestCase):
-    def setUp(self):
-        self.comment=Comment(comment='nice')
-    def test_instance(self):
-        self.assertTrue(isinstance(self.comment,Comment))
+# class CommentTestClass(TestCase):
+#     def setUp(self):
+#         self.comment=Comment(comment='nice')
+#     def test_instance(self):
+#         self.assertTrue(isinstance(self.comment,Comment))
