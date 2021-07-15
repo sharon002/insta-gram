@@ -16,6 +16,10 @@ import dj_database_url
 import django_heroku 
 from decouple import config,Csv
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -144,7 +148,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = 'all_images'
 LOGIN_URL = 'login'
@@ -155,3 +158,13 @@ LOGIN_URL = 'login'
 # EMAIL_PORT = config('EMAIL_PORT')
 # EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+cloudinary.config( 
+  cloud_name = "dsufairr3", 
+  api_key = "317198116779463", 
+  api_secret = "VUqw8wiqFZFwK4tXQsdNQAE5CU0" 
+)
+
+django_heroku.settings(locals())
+ 

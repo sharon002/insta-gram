@@ -1,4 +1,4 @@
-#!/home/sharon/Desktop/insta-gram/newenv/bin/python3.8
+#!/home/sharon/Desktop/insta-gram/newenv/bin/python
 from django.core import management
 
 if __name__ == "__main__":

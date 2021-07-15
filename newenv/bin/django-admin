@@ -1,4 +1,4 @@
-#!/home/sharon/Desktop/insta-gram/newenv/bin/python3.8
+#!/home/sharon/Desktop/insta-gram/newenv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

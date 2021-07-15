@@ -24,6 +24,7 @@ urlpatterns = [
     url('login/', views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url('^register/', clones_views.register, name='register'),
-    url(r'^logout/$', views.logout, {"next_page": '/'}), 
+    url(r'^logout/$', views.logout_then_login, name="logout"),
+    # url(r'^logout/$', views.logout, {"next_page": '/'}), 
     url(r'^tinymce/', include('tinymce.urls')),
 ]

@@ -6,6 +6,9 @@ from django.utils import timezone
 from tinymce.models import HTMLField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import cloudinary
+from cloudinary.models import CloudinaryField
+
 
 
 class Profile(models.Model):
@@ -44,7 +47,8 @@ class Profile(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='images/')
+    # image = models.ImageField(upload_to='images/')
+    image= cloudinary.models.CloudinaryField('image',null=True, blank=True)
     image_name = models.CharField(max_length=20, blank=True)
     image_caption = models.CharField(max_length=100)
     likes = models.BooleanField(default=False)
